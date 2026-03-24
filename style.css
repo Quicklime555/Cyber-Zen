@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#background-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.controls-left {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-size: 12px;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.font-options, .size-options, .mode-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.font-options {
+    flex-direction: column;
+}
+
+.mode-options {
+    flex-direction: row;
+}
+
+button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+button.active {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.controls-bottom {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 30px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 16px 24px;
+    border-radius: 12px;
+}
+
+.controls-bottom .control-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+#volume-slider {
+    width: 120px;
+    cursor: pointer;
+    accent-color: white;
+}
+
+.main-container {
+    position: relative;
+    z-index: 5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+#text-editor {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    min-height: 400px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 32px;
+    color: inherit;
+    line-height: 1.7;
+    resize: none;
+    outline: none;
+    transition: all 0.3s;
+}
+
+#text-editor.small {
+    font-size: 14px;
+}
+
+#text-editor.medium {
+    font-size: 18px;
+}
+
+    #text-editor.large {
+    font-size: 22px;
+}
+
+.fade-animation-container.small {
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.fade-animation-container.medium {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.fade-animation-container.large {
+    font-size: 22px;
+    line-height: 1.7;
+}
+
+#text-editor:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.editor-actions {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.editor-actions .action-btn {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.pomodoro {
+    margin-top: 30px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 20px 32px;
+    text-align: center;
+}
+
+.pomodoro-display {
+    font-size: 36px;
+    font-weight: 300;
+    margin-bottom: 12px;
+    letter-spacing: 3px;
+}
+
+.pomodoro.blinking .pomodoro-display {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0.3;
+    }
+}
+
+.pomodoro-btn {
+    padding: 8px 24px;
+    font-size: 14px;
+}
+
+/* 飘散动画 */
+.fade-animation-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 32px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.fade-animation-container.active {
+    opacity: 1;
+}
+
+.fade-line {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-line.fade-out {
+    animation: fadeUpOut 1.5s forwards ease-out;
+}
+
+@keyframes fadeUpOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-80px);
+    }
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .controls-left {
+        left: 10px;
+        top: 10px;
+        transform: none;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .controls-bottom {
+        flex-direction: column;
+        gap: 15px;
+        bottom: 10px;
+        padding: 12px;
+    }
+
+    .main-container {
+        padding: 80px 20px 120px;
+    }
+
+    #text-editor {
+        min-height: 300px;
+        padding: 20px;
+    }
+
+    .pomodoro {
+        margin-top: 20px;
+        padding: 16px 24px;
+    }
+
+    .pomodoro-display {
+        font-size: 28px;
+    }
+}

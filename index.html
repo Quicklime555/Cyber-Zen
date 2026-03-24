@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赛博禅意 - Cyber Zen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-container">
+        <canvas id="background-canvas"></canvas>
+    </div>
+
+    <div class="controls-left">
+        <div class="control-group">
+            <label>字体</label>
+            <div class="font-options">
+                <button data-font="system-ui" class="font-btn active">默认</button>
+                <button data-font="Georgia, serif" class="font-btn">衬线</button>
+                <button data-font="'Courier New', monospace" class="font-btn">等宽</button>
+                <button data-font="cursive" class="font-btn">手写</button>
+                <button data-font="'PingFang SC', sans-serif" class="font-btn">雅黑</button>
+            </div>
+        </div>
+        <div class="control-group">
+            <label>字号</label>
+            <div class="size-options">
+                <button data-size="small" class="size-btn">小</button>
+                <button data-size="medium" class="size-btn active">中</button>
+                <button data-size="large" class="size-btn">大</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls-bottom">
+        <div class="control-group mode-group">
+            <label>模式</label>
+            <div class="mode-options">
+                <button data-mode="rainy" class="mode-btn">雨天</button>
+                <button data-mode="snowy" class="mode-btn active">雪天</button>
+            </div>
+        </div>
+        <div class="control-group volume-group">
+            <label>音量</label>
+            <input type="range" id="volume-slider" min="0" max="100" value="50">
+        </div>
+    </div>
+
+    <div class="main-container">
+        <textarea id="text-editor" placeholder="在这里写下你的思绪..."></textarea>
+        <div id="fade-animation-container" class="fade-animation-container"></div>
+        <div class="editor-actions">
+            <button id="save-btn" class="action-btn">保存</button>
+            <button id="fade-btn" class="action-btn">飘散</button>
+        </div>
+        <div id="pomodoro-timer" class="pomodoro">
+            <div class="pomodoro-display">25:00</div>
+            <button id="pomodoro-start" class="pomodoro-btn">开始</button>
+        </div>
+    </div>
+
+    <audio id="rain-audio" loop src="https://assets.mixkit.co/sfx/preview/mixkit-rain-ambience-1326.mp3"></audio>
+    <audio id="snow-audio" loop src="https://assets.mixkit.co/sfx/preview/mixkit-snow-falling-wind-3613.mp3"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
